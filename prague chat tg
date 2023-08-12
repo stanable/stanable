@@ -1,0 +1,8 @@
+async def test1(client):
+    chat_id = 'https://t.me/prague_ad'
+    chat_entity =  await client.get_entity(chat_id)
+    participants =  await client(GetParticipantsRequest(
+        chat_entity, ChannelParticipantsSearch(''), offset=0, limit=200, hash=0))
+    for user in participants.users:
+        print(user)
+    return
